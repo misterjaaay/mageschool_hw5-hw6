@@ -1,0 +1,27 @@
+
+<?php echo $this->getwelcome (); ?>
+<h1>MY Block</h1>
+
+<h2>Posts</h2>
+<?php echo $this-> getPosts().'<br /><br /><br />';  ?>
+
+<h2>Products</h2>
+<?php 
+$products = $this->getProducts ('entity_id', 1, 5, 10);
+foreach ($products as $k => $v){
+	$entity_id = $v->getEntityId();
+	$product = Mage::getModel('catalog/product')->load($entity_id);
+	echo $product->getEntityId().'<br />';
+	echo $product->getName().'<br />';
+	echo $product->getDescription().'<br />';
+	echo $product->getPrice().'<br />';
+	echo '<br />**********************************************************<br />';
+	
+}
+
+// var_dump($products);
+
+?>
+
+
+
